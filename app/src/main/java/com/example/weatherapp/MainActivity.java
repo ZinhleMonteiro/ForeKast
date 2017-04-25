@@ -5,6 +5,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +27,8 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    TextView cityField, detailsField, currentTemperatureField, humidity_field, pressure_field, weatherIcon, updatedField;
+    TextView cityField, detailsField, currentTemperatureField, humidity_field, pressure_field, updatedField;
+    ImageView imgIcon;
     private float mLatitude = 35.02f, mLongitude = 139.01f;
     Typeface weatherFont;
     private static final String[] FINE_LOCATION_PERMISSION = {Manifest.permission.ACCESS_FINE_LOCATION};
@@ -105,8 +107,7 @@ public class MainActivity extends AppCompatActivity {
         currentTemperatureField = (TextView) findViewById(R.id.current_temperature_field);
         humidity_field = (TextView) findViewById(R.id.humidity_field);
         pressure_field = (TextView) findViewById(R.id.pressure_field);
-        weatherIcon = (TextView) findViewById(R.id.weather_icon);
-        weatherIcon.setTypeface(weatherFont);
+        imgIcon = (ImageView)findViewById(R.id.img_icon);
     }
 
     public static String setWeatherIcon(int actualId, long sunrise, long sunset) {
@@ -151,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
         currentTemperatureField.setText(temperature);
         humidity_field.setText(humidity);
         pressure_field.setText(pressure);
-        weatherIcon.setText(Html.fromHtml(iconText));
+        imgIcon.setImageResource(0);
 
     }
 }
