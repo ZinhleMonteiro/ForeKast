@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int FINE_LOATION_REQUEST = 1337;
     private static final int INTERNET_REQUEST = 1338;
     private RequestQueue mRequestQueue;
-    private static final String OPEN_WEATHER_MAP_URL ="http://api.openweathermap.org/data/2.5/weather?q=Tzaneen&appid=c1adf1f6a33b521bd299497be91e18bb";
+    private static final String OPEN_WEATHER_MAP_URL ="http://api.openweathermap.org/data/2.5/weather?q=Durban&appid=c1adf1f6a33b521bd299497be91e18bb";
             //"http://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&appid=c1adf1f6a33b521bd299497be91e18bb";
     private static final String OPEN_WEATHER_MAP_API = "c1adf1f6a33b521bd299497be91e18bb";
 
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
         humidity_field = (TextView) findViewById(R.id.humidity_field);
         pressure_field = (TextView) findViewById(R.id.pressure_field);
         weatherIcon = (TextView) findViewById(R.id.weather_icon);
-        weatherIcon.setTypeface(weatherFont);
+
     }
 
     public static String setWeatherIcon(int actualId, long sunrise, long sunset) {
