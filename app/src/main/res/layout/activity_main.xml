@@ -81,7 +81,6 @@
         android:id="@+id/img_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_launcher"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 

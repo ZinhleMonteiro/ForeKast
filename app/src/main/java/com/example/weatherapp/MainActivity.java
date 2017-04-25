@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int FINE_LOATION_REQUEST = 1337;
     private static final int INTERNET_REQUEST = 1338;
     private RequestQueue mRequestQueue;
-    private static final String OPEN_WEATHER_MAP_URL ="http://api.openweathermap.org/data/2.5/weather?q=Tzaneen&appid=c1adf1f6a33b521bd299497be91e18bb";
+    private static final String OPEN_WEATHER_MAP_URL ="http://api.openweathermap.org/data/2.5/weather?q=Durban&appid=c1adf1f6a33b521bd299497be91e18bb";
             //"http://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&appid=c1adf1f6a33b521bd299497be91e18bb";
     private static final String OPEN_WEATHER_MAP_API = "c1adf1f6a33b521bd299497be91e18bb";
 
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
                                     response.getJSONObject("sys").getLong("sunset") * 1000);
 
 
-                            setData(city, description, temperature, humidity, pressure, updatedOn, iconText);
+                            setData(city, description, temperature, humidity, pressure, updatedOn, setWeatherIcon(description));
                         }catch (Exception ex) {
                             ex.printStackTrace();
                         }
@@ -145,15 +145,26 @@ public class MainActivity extends AppCompatActivity {
         return icon;
     }
 
-    public void setData(String city, String description, String temperature, String humidity, String pressure, String updatedOn, String iconText) {
+    public void setData(String city, String description, String temperature, String humidity, String pressure, String updatedOn, int resourceId) {
         cityField.setText(city);
         updatedField.setText(updatedOn);
         detailsField.setText(description);
         currentTemperatureField.setText(temperature);
         humidity_field.setText(humidity);
         pressure_field.setText(pressure);
-        imgIcon.setImageResource(0);
+        imgIcon.getLayoutParams().height = 250;
+        imgIcon.getLayoutParams().width = 250;
+        imgIcon.setImageResource(resourceId);
 
+    }
+
+    public int setWeatherIcon(String weather) {
+        switch (weather) {
+            case "LIGHT RAIN" :
+                return R.drawable.clear_day;
+            default:
+                return R.drawable.cloudy_weather;
+        }
     }
 }
 
