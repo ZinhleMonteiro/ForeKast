@@ -3,7 +3,9 @@ package com.example.weatherapp;
 import android.Manifest;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private static final int FINE_LOATION_REQUEST = 1337;
     private static final int INTERNET_REQUEST = 1338;
     private RequestQueue mRequestQueue;
-    private static final String OPEN_WEATHER_MAP_URL ="http://api.openweathermap.org/data/2.5/weather?q=Durban&appid=c1adf1f6a33b521bd299497be91e18bb";
+    private static final String OPEN_WEATHER_MAP_URL ="http://api.openweathermap.org/data/2.5/weather?q=Moscow&appid=c1adf1f6a33b521bd299497be91e18bb";
             //"http://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&appid=c1adf1f6a33b521bd299497be91e18bb";
     private static final String OPEN_WEATHER_MAP_API = "c1adf1f6a33b521bd299497be91e18bb";
 
@@ -44,8 +46,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Set the toolbar as the app bar for the activity
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
         requestPermissions(FINE_LOCATION_PERMISSION, FINE_LOATION_REQUEST);
         requestPermissions(INTERNET_PERMISSION, INTERNET_REQUEST);
+
+
 
         //weatherFont = Typeface.createFromAsset(getAssets(), "fonts/weathericons-regular-webfont.ttf");
         initComponents();
@@ -161,9 +168,55 @@ public class MainActivity extends AppCompatActivity {
     public int setWeatherIcon(String weather) {
         switch (weather) {
             case "LIGHT RAIN" :
+                return R.drawable.rainy_day;
+
+            case "CLEAR SKY" :
                 return R.drawable.clear_day;
-            default:
+
+            case "THUNDERSTORM WITH LIGHT RAIN":
+
+               return R.drawable.storm_weather;
+
+            case "THUNDERSTORM WITH RAIN":
+
+                return R.drawable.storm_weather;
+
+            case "SHOWER RAIN AND DRIZZLE":
+
+                return R.drawable.storm_weather;
+
+            case "lIGHT RAIN":
+
+                return R.drawable.storm_weather;
+
+            case "SNOW":
+
+                return R.drawable.snow_weather;
+
+            case "OVERCAST CLOUDS":
+
+                return R.drawable.partly_cloudy;
+
+            case "LIGHT RAIN AND SNOW":
+
+                return R.drawable.rain_snow;
+
+            case "HAZE":
+
+                return R.drawable.haze_weather;
+
+            case "FEW CLOUDS":
+
                 return R.drawable.cloudy_weather;
+
+
+            case "WINDY":
+
+                return R.drawable.windy_weather;
+
+
+            default:
+                return R.drawable.unknown;
         }
     }
 }
